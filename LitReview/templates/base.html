@@ -1,0 +1,26 @@
+{% load static %}
+<html>
+    <head>
+        <title>LitReview</title>
+        <link rel="stylesheet" href="{% static 'app.css' %}">
+    </head>
+    <body>
+        <header>
+            <h1> LitReview </h1>
+            {% if user.is_authenticated %}
+          <nav>
+            <ul>
+              <li><a href="#">Flux</a></li>
+              <li><a href="#">Posts</a></li>
+              <li><a href="#">Abonnements</a></li>
+              <li><a href="{% url 'logout' %}">Se déconnecter</a></li>
+            </ul>
+          </nav>
+            {% endif %}
+        </header>
+        <div class="main">
+            {% block content %}
+            {% endblock content %}
+        </div>
+    </body>
+</html>
