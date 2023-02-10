@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if request.user.is_authenticated %}
+    <button onclick="window.location.href='{% url 'ticket_upload' %}'">Demander une critique</button>
+    <button onclick="window.location.href='{% url 'critique_on_new_ticket_upload' %}'">Créer une critique</button>
+        {% for post in posts %}
+            {% if post.content_type == 'TICKET_UNREVIEWED' %}
+                {% include "ticket/ticket_snippet.html" with ticket=post snippet_mode='flux_unreviewed' %}
+            {% elif post.content_type == 'TICKET_REVIEWED' %}
+                {% include "ticket/ticket_snippet.html" with ticket=post snippet_mode='flux_reviewed' %}
+            {% elif post.content_type == 'CRITIQUE' %}
+                {% include "ticket/critique_snippet.html" with review=post snippet_mode='flux_reviewed' %}
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <p>Veuillez vous connecter pour accéder a votre flux.</p>
+        <button onclick="window.location.href='{% url 'login' %}'">Connexion</button>
+    {% endif %}
+{% endblock content %}

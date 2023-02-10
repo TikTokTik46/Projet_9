@@ -16,7 +16,10 @@ Including another URLconf
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 import ticket.views
+import user_follow.views
 import authentication.views
 
 urlpatterns = [
@@ -35,5 +38,18 @@ urlpatterns = [
          name='password_change_done'
          ),
     path('signup/', authentication.views.signup_page, name='signup'),
-    path('home/', ticket.views.home, name='home')
+    path('flux/', ticket.views.flux, name='flux'),
+    path('posts/', ticket.views.posts, name='posts'),
+    path('ticket/upload/', ticket.views.ticket_upload, name='ticket_upload'),
+    path('critique/upload', ticket.views.critique_on_new_ticket_upload, name='critique_on_new_ticket_upload'),
+    path('critique/<int:ticket_id>/upload', ticket.views.critique_on_existing_ticket_upload, name='critique_on_existing_ticket_upload'),
+    path('delete_ticket/<int:pk>/', ticket.views.TicketDeleteView.as_view(), name='delete_ticket'),
+    path('delete_critique/<int:pk>/', ticket.views.CritiqueDeleteView.as_view(), name='delete_critique'),
+    path('update_ticket/<int:pk>/', ticket.views.TicketUpdateView.as_view(), name='update_ticket'),
+    path('update_critique/<int:pk>/', ticket.views.CritiqueUpdateView.as_view(), name='update_critique'),
+    path('users-followed', user_follow.views.user_followed, name='users_followed'),
 ]
+# Permet de rendre les photos accéssible par le biais d'une URL
+if settings.DEBUG:
+    urlpatterns += static(
+        settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

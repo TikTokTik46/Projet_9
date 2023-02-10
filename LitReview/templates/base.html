@@ -10,10 +10,10 @@
             {% if user.is_authenticated %}
           <nav>
             <ul>
-              <li><a href="#">Flux</a></li>
-              <li><a href="#">Posts</a></li>
-              <li><a href="#">Abonnements</a></li>
-              <li><a href="{% url 'logout' %}">Se déconnecter</a></li>
+              <li><a href="{% url 'flux' %}">Flux</a></li>
+              <li><a href="{% url 'posts' %}">Posts</a></li>
+              <li><a href="{% url 'users_followed' %}">Abonnements</a></li>
+              <li><a href="{% url 'logout' %}">Se déconnecter ({{ request.user.username }})</a></li>
             </ul>
           </nav>
             {% endif %}

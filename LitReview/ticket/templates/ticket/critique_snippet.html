@@ -1,0 +1,14 @@
+{% load format_date %}
+{% load replace_username %}
+<div style="border: 1px solid black; padding: 10px; margin-bottom: 5px">
+    <p>{{ review.user.username|replace_username:request.user.username }} posté une critique
+        - {{ review.time_created|format_date }} </p>
+    <strong> {{ review.headline }} </strong><br>
+    <p> {{ review.rating }} </p>
+    <p> {{ review.body }} </p>
+        {% include "ticket/ticket_snippet.html" with ticket=review.ticket snippet_mode='flux_reviewed' %}
+    {% if snippet_mode == 'post' %}
+    <button onclick="window.location.href='{% url 'delete_critique' pk=review.pk %}'">Supprimer la critique</button>
+    <button onclick="window.location.href='{% url 'update_critique' pk=review.pk %}'">Modifier la critique</button>
+    {% endif %}
+</div>

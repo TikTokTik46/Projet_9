@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% if request.user.is_authenticated %}
+        {% for post in posts %}
+            {% if post.content_type == 'TICKET' %}
+                {% include "ticket/ticket_snippet.html" with ticket=post snippet_mode='post' %}
+            {% elif post.content_type == 'CRITIQUE' %}
+                {% include "ticket/critique_snippet.html" with review=post snippet_mode='post' %}
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <p>Veuillez vous connecter pour accéder a vos posts.</p>
+        <button onclick="window.location.href='{% url 'login' %}'">Connexion</button>
+    {% endif %}
+{% endblock content %}

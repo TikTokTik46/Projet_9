@@ -12,14 +12,14 @@ nav {
   align-items: center;
 }
 
-ul {
+nav > ul {
   display: flex;
   list-style: none;
   margin-left: 0;
   padding: 0;
 }
 
-li {
+nav > li {
   margin: 0 10px;
 }
 
@@ -32,4 +32,3 @@ h1 {
 margin : 0;
 padding : 0;
 }
-
