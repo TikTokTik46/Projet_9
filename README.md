@@ -1,8 +1,6 @@
 # LitReview
 
-LitReview est un forum de revue littéraire réalisé avec Django. Les utilisateurs peuvent commenter des ouvrages ou en demander la critique, et il y a un système d'abonnement entre les utilisateurs.
-Une base de données d'exemples de conversation est déja présente afin .
-
+LitReview est un forum de revue littéraire réalisé avec Django. Les utilisateurs peuvent demander la critique d'un ouvrage ou répondre à la demande d'un autre utilisateur. Un système d'abonnement entre les utilisateurs, permet de filtrer le flux de chaque abonné.
 
 ## Installation
 
@@ -12,7 +10,8 @@ Une base de données d'exemples de conversation est déja présente afin .
 
 ## Utilisation
 
-Pour utiliser LitReview, accédez à `http://localhost:8000` dans votre navigateur web. Vous pouvez créer un compte et commencer à ajouter des commentaires ou demander une critique.
+Pour utiliser LitReview, accédez à `http://localhost:8000` dans votre navigateur web.
+Vous pouvez créer un compte et commencer à ajouter des commentaires ou demander une critique.
 Vous pouvez également consulter le site d'administration en accédant à `http://localhost:8000/admin` et en utilisant le compte d'administrateur ci-dessous.
 
 nom : admin
