@@ -1,9 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
-<form method="post">
-  {% csrf_token %}
-  <p>Etes-vous sur de vouloir supprimer cette critique ?</p>
-  {% include "ticket/critique_snippet.html" with review=critique snippet_mode='flux_reviewed' %}
-  <input type="submit" value="Delete">
-</form>
+<div class="forms">
+  <form method="post">
+    {% csrf_token %}
+    <p>Etes-vous sur de vouloir supprimer cette critique ?</p>
+    {% include "ticket/critique_snippet.html" with review=critique snippet_mode='flux_reviewed' %}
+    <input type="submit" value="Supprimer">
+  </form>
+</div>
 {% endblock content %}

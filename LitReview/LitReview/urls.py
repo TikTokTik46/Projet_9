@@ -13,7 +13,8 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView
+from django.contrib.auth.views import LoginView, LogoutView,\
+    PasswordChangeView, PasswordChangeDoneView
 from django.contrib import admin
 from django.urls import path
 from django.conf import settings
@@ -41,13 +42,21 @@ urlpatterns = [
     path('flux/', ticket.views.flux, name='flux'),
     path('posts/', ticket.views.posts, name='posts'),
     path('ticket/upload/', ticket.views.ticket_upload, name='ticket_upload'),
-    path('critique/upload', ticket.views.critique_on_new_ticket_upload, name='critique_on_new_ticket_upload'),
-    path('critique/<int:ticket_id>/upload', ticket.views.critique_on_existing_ticket_upload, name='critique_on_existing_ticket_upload'),
-    path('delete_ticket/<int:pk>/', ticket.views.TicketDeleteView.as_view(), name='delete_ticket'),
-    path('delete_critique/<int:pk>/', ticket.views.CritiqueDeleteView.as_view(), name='delete_critique'),
-    path('update_ticket/<int:pk>/', ticket.views.TicketUpdateView.as_view(), name='update_ticket'),
-    path('update_critique/<int:pk>/', ticket.views.CritiqueUpdateView.as_view(), name='update_critique'),
-    path('users-followed', user_follow.views.user_followed, name='users_followed'),
+    path('critique/upload', ticket.views.critique_on_new_ticket_upload,
+         name='critique_on_new_ticket_upload'),
+    path('critique/<int:ticket_id>/upload',
+         ticket.views.critique_on_existing_ticket_upload,
+         name='critique_on_existing_ticket_upload'),
+    path('delete_ticket/<int:pk>/', ticket.views.TicketDeleteView.as_view(),
+         name='delete_ticket'),
+    path('delete_critique/<int:pk>/', ticket.views.
+         CritiqueDeleteView.as_view(), name='delete_critique'),
+    path('update_ticket/<int:pk>/', ticket.views.TicketUpdateView.as_view(),
+         name='update_ticket'),
+    path('update_critique/<int:pk>/', ticket.views.
+         CritiqueUpdateView.as_view(), name='update_critique'),
+    path('users-followed', user_follow.views.user_followed,
+         name='users_followed'),
 ]
 # Permet de rendre les photos accéssible par le biais d'une URL
 if settings.DEBUG:

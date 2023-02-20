@@ -2,6 +2,7 @@ from django import forms
 
 from . import models
 
+
 class UserFollowForm(forms.ModelForm):
     class Meta:
         model = models.UserFollow
@@ -10,4 +11,4 @@ class UserFollowForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         followed = kwargs.pop('followed')
         super().__init__(*args, **kwargs)
-        self.fields['followed_user'].queryset = self.fields['followed_user'].queryset.exclude(followed_by__in=followed)
+        self.fields['followed_user'].queryset = followed

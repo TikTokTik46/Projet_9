@@ -1,10 +1,19 @@
 {% load format_date %}
+{% load times %}
 {% load replace_username %}
-<div style="border: 1px solid black; padding: 10px; margin-bottom: 5px">
+<div class="snippet">
     <p>{{ review.user.username|replace_username:request.user.username }} posté une critique
         - {{ review.time_created|format_date }} </p>
     <strong> {{ review.headline }} </strong><br>
-    <p> {{ review.rating }} </p>
+    <p>
+    {% for i in 6|times %}
+      {% if review.rating >= i %}
+        &#9733;
+      {% else %}
+        &#9734;
+      {% endif %}
+    {% endfor %}
+    </p>
     <p> {{ review.body }} </p>
         {% include "ticket/ticket_snippet.html" with ticket=review.ticket snippet_mode='flux_reviewed' %}
     {% if snippet_mode == 'post' %}

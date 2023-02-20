@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+<div class="content">
     <h2>Inscription</h2>
     {% if form.errors %}
         {{ form.errors }}
@@ -9,5 +10,6 @@
         {% csrf_token %}
         <button type="submit" >S’inscrire</button>
     </form>
-        <button onclick="window.location.href='{% url 'login' %}'">Retour</button>
+    <button onclick="window.location.href='{% url 'login' %}'">Retour</button>
+</div>
 {% endblock content %}

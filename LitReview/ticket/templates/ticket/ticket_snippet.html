@@ -1,6 +1,6 @@
 {% load format_date %}
 {% load replace_username %}
-<div style="border: 1px solid black; padding: 5px; margin-bottom: 5px">
+<div class="snippet">
     <p>{{ ticket.user.username|replace_username:request.user.username }} demandé une critique
         - {{ ticket.time_created|format_date }} </p>
     <strong> {{ ticket.title }} </strong><br>

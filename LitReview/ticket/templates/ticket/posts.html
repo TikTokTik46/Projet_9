@@ -1,13 +1,16 @@
 {% extends 'base.html' %}
 {% block content %}
     {% if request.user.is_authenticated %}
-        {% for post in posts %}
+    <div class="content">
+        {% for post in page_posts %}
             {% if post.content_type == 'TICKET' %}
                 {% include "ticket/ticket_snippet.html" with ticket=post snippet_mode='post' %}
             {% elif post.content_type == 'CRITIQUE' %}
                 {% include "ticket/critique_snippet.html" with review=post snippet_mode='post' %}
             {% endif %}
         {% endfor %}
+    </div>
+        {% include "ticket/paginator.html" with page_obj=page_posts %}
     {% else %}
         <p>Veuillez vous connecter pour accéder a vos posts.</p>
         <button onclick="window.location.href='{% url 'login' %}'">Connexion</button>

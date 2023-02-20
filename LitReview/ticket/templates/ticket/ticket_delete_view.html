@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
-<form method="post">
-  {% csrf_token %}
-  <p>Etes vous sur de vouloir supprimer ce ticket ?</p>
-  <input type="submit" value="Delete">
-</form>
+<div class="forms">
+  <form method="post">
+    {% csrf_token %}
+    <p>Etes vous sur de vouloir supprimer ce ticket ?</p>
+      {% include "ticket/ticket_snippet.html" with ticket=ticket %}
+    <input type="submit" value="Supprimer">
+  </form>
+</div>
 {% endblock content %}

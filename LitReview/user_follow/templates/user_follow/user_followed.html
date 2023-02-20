@@ -1,35 +1,38 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h2>Suivre d'autres utilisateurs</h2>
-        <form method="post">
-        {{ user_follow_form.as_p }}
-        {% csrf_token %}
-        <button type="submit" >S'abonner</button>
-    </form>
-    <h2>Abonnements</h2>
-    <ul>
-        {% for user_followed in users_followed %}
-            <li>
-                    <form method="post">
-                    {% csrf_token %}
-                    <input type="hidden" name="action" value="delete">
-                    {{ user_followed.followed_user}}
-                    <input type="hidden" name="object_id" value="{{ user_followed.id }}">
-                    <button type="submit">Ne plus suivre</button>
-                    </form>
-            </li>
-        {% empty %}
-        <p>Il s'emble que vous ne soyez pas encore abonné à quelqu'un, faites le c'est gratuit =) !</p>
-        {% endfor %}
-    </ul>
-    <h2>Abonnés</h2>
-    <ul>
-        {% for user_following in users_following %}
-            <li>
-                {{ user_following.user}}
-            </li>
-        {% empty %}
-            <p>Vous n'avez pas d'abonnés pour l'instant.</p>
-        {% endfor %}
-    </ul>
+    <div class="forms">
+        <h2>Suivre d'autres utilisateurs</h2>
+            <form method="post">
+            {{ user_follow_form.as_p }}
+                <input type="hidden" name="action" value="add">
+            {% csrf_token %}
+            <button type="submit" >S'abonner</button>
+        </form>
+        <h2>Abonnements</h2>
+        <ul>
+            {% for user_followed in user_follow_request %}
+                <li>
+                        <form method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="action" value="delete">
+                        {{ user_followed.followed_user}}
+                        <input type="hidden" name="object_id" value="{{ user_followed.id }}">
+                        <button type="submit">Ne plus suivre</button>
+                        </form>
+                </li>
+            {% empty %}
+            <p>Il s'emble que vous ne soyez pas encore abonné à quelqu'un, faites le c'est gratuit =) !</p>
+            {% endfor %}
+        </ul>
+        <h2>Abonnés</h2>
+        <ul>
+            {% for user_following in users_following %}
+                <li>
+                    {{ user_following.user}}
+                </li>
+            {% empty %}
+                <p>Vous n'avez pas d'abonnés pour l'instant.</p>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock content %}

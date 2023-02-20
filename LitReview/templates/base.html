@@ -3,6 +3,7 @@
     <head>
         <title>LitReview</title>
         <link rel="stylesheet" href="{% static 'app.css' %}">
+        <link rel="shortcut icon" type="image/x-icon" href="{% static 'LitReview.png' %}">
     </head>
     <body>
         <header>
@@ -16,6 +17,7 @@
               <li><a href="{% url 'logout' %}">Se déconnecter ({{ request.user.username }})</a></li>
             </ul>
           </nav>
+              <img src="{% static 'LitReview.png' %}" id="logo">
             {% endif %}
         </header>
         <div class="main">

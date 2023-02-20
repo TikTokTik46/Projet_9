@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-    <div>
+    <div class="content">
         <h2>Connectez-vous</h2>
         <p>{{ message }}</p>
         <form method="post">
@@ -8,9 +8,7 @@
             {% csrf_token %}
             <button type="submit" >Se connecter</button>
         </form>
-    </div>
-    <div>
-        <h2>Inscrivez-vous maintenant</h2>
-        <button onclick="window.location.href='{% url 'signup' %}'">Formulaire d'inscription</button>
+    <h2>Inscrivez-vous maintenant</h2>
+    <button onclick="window.location.href='{% url 'signup' %}'">Formulaire d'inscription</button>
     </div>
 {% endblock content %}

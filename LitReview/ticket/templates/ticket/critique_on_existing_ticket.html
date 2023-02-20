@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+<div class="forms">
     <h2>Créer une critique au ticket : {{ ticket.title }}</h2>
     {% include "ticket/ticket_snippet.html" with ticket=ticket review_button=False %}
     <form method="post">
@@ -7,4 +8,5 @@
         {% csrf_token %}
         <button type="submit" >Publier</button>
     </form>
+</div>
 {% endblock content %}
