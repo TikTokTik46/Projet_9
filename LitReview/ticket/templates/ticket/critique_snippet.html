@@ -2,22 +2,22 @@
 {% load times %}
 {% load replace_username %}
 <div class="snippet">
-    <p>{{ review.user.username|replace_username:request.user.username }} posté une critique
-        - {{ review.time_created|format_date }} </p>
-    <strong> {{ review.headline }} </strong><br>
+    <p>{{ critique.user.username|replace_username:request.user.username }} posté une critique
+        - {{ critique.time_created|format_date }} </p>
+    <strong> {{ critique.headline }} </strong><br>
     <p>
     {% for i in 6|times %}
-      {% if review.rating >= i %}
+      {% if critique.rating >= i %}
         &#9733;
       {% else %}
         &#9734;
       {% endif %}
     {% endfor %}
     </p>
-    <p> {{ review.body }} </p>
-        {% include "ticket/ticket_snippet.html" with ticket=review.ticket snippet_mode='flux_reviewed' %}
+    <p> {{ critique.body }} </p>
+        {% include "ticket/ticket_snippet.html" with ticket=critique.ticket snippet_mode='flux_reviewed' %}
     {% if snippet_mode == 'post' %}
-    <button onclick="window.location.href='{% url 'delete_critique' pk=review.pk %}'">Supprimer la critique</button>
-    <button onclick="window.location.href='{% url 'update_critique' pk=review.pk %}'">Modifier la critique</button>
+    <button onclick="window.location.href='{% url 'delete_critique' pk=critique.pk %}'">Supprimer la critique</button>
+    <button onclick="window.location.href='{% url 'update_critique' pk=critique.pk %}'">Modifier la critique</button>
     {% endif %}
 </div>

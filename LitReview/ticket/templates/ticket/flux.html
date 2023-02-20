@@ -6,18 +6,19 @@
         <button onclick="window.location.href='{% url 'ticket_upload' %}'">Demander une critique</button>
         <button onclick="window.location.href='{% url 'critique_on_new_ticket_upload' %}'">Créer une critique</button>
         </div>
-            {% for post in page_flux %}
-                {% if post.content_type == 'TICKET_UNREVIEWED' %}
-                    {% include "ticket/ticket_snippet.html" with ticket=post snippet_mode='flux_unreviewed' %}
-                {% elif post.content_type == 'TICKET_REVIEWED' %}
-                    {% include "ticket/ticket_snippet.html" with ticket=post snippet_mode='flux_reviewed' %}
-                {% elif post.content_type == 'CRITIQUE' %}
-                    {% include "ticket/critique_snippet.html" with review=post snippet_mode='flux_reviewed' %}
-                {% endif %}
-            {% empty %}
-            <p> Votre flux est vide, <a href="{% url 'users_followed' %}"> abonnez-vous </a> à d'autres utilisateurs ou publier du contenu pour étoffer votre flux !</p>
-            {% endfor %}
+        {% for post in page_flux %}
+            {% if post.content_type == 'TICKET_UNREVIEWED' %}
+                {% include "ticket/ticket_snippet.html" with ticket=post snippet_mode='flux_unreviewed' %}
+            {% elif post.content_type == 'TICKET_REVIEWED' %}
+                {% include "ticket/ticket_snippet.html" with ticket=post snippet_mode='flux_reviewed' %}
+            {% elif post.content_type == 'CRITIQUE' %}
+                {% include "ticket/critique_snippet.html" with critique=post snippet_mode='flux_reviewed' %}
+            {% endif %}
+        {% endfor %}
         </div>
+        {% if not page_flux %}
+        <p> Votre flux est vide, <a href="{% url 'users_followed' %}"> abonnez-vous </a> à d'autres utilisateurs ou publiez du contenu pour étoffer votre flux !</p>
+        {% endif %}
         {% include "ticket/paginator.html" with page_obj=page_flux %}
     {% else %}
         <p>Veuillez vous connecter pour accéder a votre flux.</p>

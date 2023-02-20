@@ -6,10 +6,13 @@
             {% if post.content_type == 'TICKET' %}
                 {% include "ticket/ticket_snippet.html" with ticket=post snippet_mode='post' %}
             {% elif post.content_type == 'CRITIQUE' %}
-                {% include "ticket/critique_snippet.html" with review=post snippet_mode='post' %}
+                {% include "ticket/critique_snippet.html" with critique=post snippet_mode='post' %}
             {% endif %}
         {% endfor %}
     </div>
+    {% if not page_posts %}
+    <p> Vous n'avez encore rien publié ! Accédez au <a href="{% url 'flux' %}">flux</a> pour créer votre première critique ou en demander une.</p>
+    {% endif %}
         {% include "ticket/paginator.html" with page_obj=page_posts %}
     {% else %}
         <p>Veuillez vous connecter pour accéder a vos posts.</p>
