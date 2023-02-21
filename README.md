@@ -11,8 +11,14 @@ LitReview est un forum de revue littéraire réalisé avec Django. Les utilisate
 ## Utilisation
 
 Pour utiliser LitReview, accédez à `http://localhost:8000` dans votre navigateur web.
-Vous pouvez créer un compte et commencer à ajouter des commentaires ou demander une critique.
-Vous pouvez également consulter le site d'administration en accédant à `http://localhost:8000/admin` et en utilisant le compte d'administrateur ci-dessous.
+Vous pouvez créer un compte ou utiliser un compte de test.
+Vous pouvez également consulter le site d'administration en accédant à `http://localhost:8000/admin` et en utilisant le compte d'administrateur (admin) disposant des droits d'administration.
+
+| Nom du compte test | Mot de passe     |
+|--------------------|------------------|
+| admin              | password         |
+| Maxime304          | max659832!       |
+| Jean207            | Y7MdPxv4pscRhd8  |
 
 nom : admin
 mot de passe : password
