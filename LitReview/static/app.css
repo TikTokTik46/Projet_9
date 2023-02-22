@@ -64,7 +64,8 @@ h1 {
 }
 
 .content {
-    width : 800px
+  width: 100%;
+  max-width: 800px;
 }
 
 .main {
@@ -79,4 +80,10 @@ h1 {
     margin-bottom: 5px;
     border-radius: 5px;
     width : 800px;
+}
+
+@media only screen and (max-width: 768px) {
+#logo {
+    display: none;
+}
 }
