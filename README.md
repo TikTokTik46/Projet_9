@@ -6,7 +6,7 @@ LitReview est un forum de revue littéraire réalisé avec Django. Les utilisate
 
 1. Cloner le repository GitHub.
 2. Installer les dépendances en utilisant la commande `pip install -r requirements.txt`.
-3. Exécuter la commande `python manage.py runserver` pour lancer le serveur.
+3. Exécuter la commande `python manage.py runserver` pour lancer le serveur depuis le répertoire LitReview.
 
 ## Utilisation
 
@@ -19,9 +19,6 @@ Vous pouvez également consulter le site d'administration en accédant à `http:
 | admin              | password         |
 | Maxime304          | max659832!       |
 | Jean207            | Y7MdPxv4pscRhd8  |
-
-nom : admin
-mot de passe : password
 
 ## Contribuer
 
